@@ -1,0 +1,167 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: gray;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    background-color: darkred;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 6fr 1fr;
+    grid-template-areas: 
+    "header header"
+    "section section"
+    "footer footer";
+}
+
+.header {
+    background-color: lightseagreen;
+    grid-area: header;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 25px;
+    color: white;
+}
+
+.section {
+    background-color: lightcoral;
+    grid-area: section;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+}
+
+.section #asideOn {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    color: white;
+    cursor: pointer;
+    display: block;
+}
+
+.section .item {
+    border-radius: 10px;
+    justify-self: center;
+    color: white;
+    border: 1px solid white;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section .item:hover {
+    border-color: gray;
+    color: gray;
+}
+
+.aside {
+    background-color: yellow;
+    grid-area: aside;
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.205);
+    padding: 20px;
+}
+
+.aside #asideOff {
+    position: absolute;
+    top: 10px;
+    left: -17px;
+    cursor: pointer;
+    width: 40px;
+}
+
+.aside .item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
+.aside .item:hover {
+    border-color: white;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.253);
+    cursor: pointer;
+}
+
+.footer {
+    background-color: limegreen;
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+    font-size: 20px;
+}
+
+@media (max-width: 310px){
+    .section #asideOn {
+        
+        width: 30px;
+    }
+}
+
+@media (max-width: 450px){
+    .section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (min-width: 740px){
+    .container {
+        grid-template-areas: 
+        "header header"
+        "section aside"
+        "footer footer";
+    }
+
+    .section #asideOn, .aside #asideOff {
+        display: none;
+    }
+
+    .section {
+        gap: 20px;
+    }
+
+    .section .item{
+        width: 80%;
+        height: 250px;
+    }
+
+    .aside {
+        display: grid;
+        width: 30vw;
+    }
+
+    .aside .item {
+        width: 200px;
+        height: 250px;
+    }
+}
